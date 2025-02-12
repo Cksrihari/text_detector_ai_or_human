@@ -30,7 +30,7 @@ def preprocess_text(text):
 def load_models():
     try:
         clf_rf = joblib.load('joblib_files/random_forest_model.joblib')
-        clf_knn = joblib.load('joblib_files/knn_model.joblib')
+        # clf_knn = joblib.load('joblib_files/knn_model.joblib')
         clf_mlp = joblib.load('joblib_files/multilayer_perceptron_model.joblib')
         clf_gb = joblib.load('joblib_files/gradient_boosting_model.joblib')
         clf_nb = joblib.load('joblib_files/naive_bayes_model.joblib')
@@ -93,7 +93,7 @@ if st.button("Submit"):
         predictions = {}
         try:
             predictions['Random Forest'] = models[0].predict(text_features)[0]
-            predictions['KNN'] = models[1].predict(text_features)[0]
+            # predictions['KNN'] = models[1].predict(text_features)[0]
             predictions['Multilayer Perceptron'] = models[2].predict(text_features)[0]
             predictions['Gradient Boosting'] = models[3].predict(text_features)[0]
             predictions['Naive Bayes'] = models[4].predict(text_features)[0]
@@ -125,10 +125,10 @@ if st.button("Submit"):
             st.warning('The models are inconclusive; the text might be either AI or Human generated.')
 
 
-        # Display individual model predictions for transparency
-        st.subheader("Model Predictions:")
-        for model_name, prediction in predictions.items():
-            st.write(f"{model_name}: {'AI' if prediction == 1 else 'Human'}")
+        # # Display individual model predictions for transparency
+        # st.subheader("Model Predictions:")
+        # for model_name, prediction in predictions.items():
+        #     st.write(f"{model_name}: {'AI' if prediction == 1 else 'Human'}")
 
 
 if st.session_state.results:
